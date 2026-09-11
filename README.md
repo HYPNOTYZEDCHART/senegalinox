@@ -18,7 +18,7 @@
 
 ---
 
-## 🌟 La Refonte Digitale (2024 - 2025)
+## 🌟 La Refonte Digitale (2026)
 
 Ce projet représente la **refonte numérique complète et sur-mesure** de la vitrine officielle de **Sénégal Inox SARL**, acteur de référence de la métallurgie et du soudage de haute précision à Dakar depuis plus de 20 ans.
 
@@ -111,4 +111,4 @@ Ce projet est 100% optimisé pour un déploiement continu sur **Vercel** :
 
 Refonte conçue et développée avec passion par **[creativ_tech](https://creativtechsn.vercel.app/)** pour le compte de **Sénégal Inox SARL**.
 
-*Tous droits réservés © 2025 Sénégal Inox SARL.*
+*Tous droits réservés © 2026 Sénégal Inox SARL.*
