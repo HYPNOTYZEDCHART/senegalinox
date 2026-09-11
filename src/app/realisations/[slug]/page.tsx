@@ -14,7 +14,6 @@ import {
   ArrowRight,
   ChevronRight,
   PhoneCall,
-  Layers,
   FileCheck,
   Wrench,
 } from "lucide-react";

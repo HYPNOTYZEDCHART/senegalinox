@@ -12,11 +12,10 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle,
-  ShieldCheck,
   Layers,
 } from "lucide-react";
 import { REALISATIONS_DATA } from "@/data/realisations";
-import { TextMaskReveal, ClipReveal, MECHANICAL_EASE } from "@/components/ui/MaskReveal";
+import { TextMaskReveal, MECHANICAL_EASE } from "@/components/ui/MaskReveal";
 
 const ICONS_MAP: Record<string, React.ReactNode> = {
   chaudronnerie: <Flame className="w-5 h-5 text-brand-blue" />,

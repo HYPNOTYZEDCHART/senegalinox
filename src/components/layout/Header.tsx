@@ -56,11 +56,13 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Fermer le menu mobile lors d'un changement de route
-  useEffect(() => {
+  // Fermer les menus lors d'un changement de route
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setMobileMenuOpen(false);
     setRealisationsOpen(false);
-  }, [pathname]);
+  }
 
   const getAnchorHref = (target: string) => {
     return pathname === "/" ? target : `/${target}`;

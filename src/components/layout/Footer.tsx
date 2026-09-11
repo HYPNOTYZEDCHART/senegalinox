@@ -560,6 +560,7 @@ export function Footer() {
                   src={activeSite ? activeSite.osmEmbedUrl : OVERVIEW_OSM_URL}
                   className="w-full h-full min-h-[380px] sm:min-h-[440px] border-0"
                   loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-popups"
                 />
 
                 {/* Badge supérieur d'état en direct avec accès rapide */}

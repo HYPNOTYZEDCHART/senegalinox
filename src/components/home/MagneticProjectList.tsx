@@ -4,8 +4,8 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowUpRight, ShieldCheck, Sparkles } from "lucide-react";
-import { TextMaskReveal, ClipReveal, MECHANICAL_EASE } from "@/components/ui/MaskReveal";
+import { ArrowUpRight } from "lucide-react";
+import { TextMaskReveal, MECHANICAL_EASE } from "@/components/ui/MaskReveal";
 
 interface ProjectItem {
   id: string;

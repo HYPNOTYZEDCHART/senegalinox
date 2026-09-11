@@ -6,9 +6,7 @@ import { motion } from "framer-motion";
 import {
   Anchor,
   ShieldCheck,
-  Award,
   Ship,
-  CheckCircle2,
   Compass,
 } from "lucide-react";
 

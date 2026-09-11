@@ -1,8 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { Users, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { EquipeHeroBanner } from "@/components/equipe/EquipeHeroBanner";
 import { EquipeNosEquipes } from "@/components/equipe/EquipeNosEquipes";
 import { CertificationsSection } from "@/components/equipe/CertificationsSection";

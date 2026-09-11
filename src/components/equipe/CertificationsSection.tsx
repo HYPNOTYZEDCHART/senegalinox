@@ -12,7 +12,6 @@ import {
   ShieldCheck,
   Award,
   ExternalLink,
-  Maximize2,
   FileCheck2,
 } from "lucide-react";
 import { CERTIFICATIONS_DATA } from "@/data/certifications";

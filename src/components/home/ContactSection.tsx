@@ -10,14 +10,13 @@ import {
   Send,
   CheckCircle,
   Briefcase,
-  Clock,
-  ShieldCheck,
 } from "lucide-react";
 import { companyData } from "@/data/company";
 import { MECHANICAL_EASE } from "@/components/ui/MaskReveal";
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -29,7 +28,21 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulation d'envoi réussi
+    // Protection anti-bot : si le champ honeypot invisible est rempli, on ignore silencieusement
+    if (honeypot) return;
+
+    // Nettoyage et validation des entrées
+    const sanitizedData = {
+      name: formData.name.trim(),
+      company: formData.company.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      specialty: formData.specialty,
+      message: formData.message.trim(),
+    };
+
+    if (!sanitizedData.name || !sanitizedData.email) return;
+
     setSubmitted(true);
   };
 
@@ -95,6 +108,18 @@ export function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot invisible anti-bot */}
+                <div className="hidden" aria-hidden="true">
+                  <input
+                    type="text"
+                    name="organization_confirm"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
@@ -103,6 +128,7 @@ export function ContactSection() {
                     <input
                       type="text"
                       required
+                      maxLength={100}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="M. / Mme Nom & Prénom"

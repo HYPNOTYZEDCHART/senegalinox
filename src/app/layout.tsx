@@ -16,7 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sénégal Inox Tech & Services | Chaudronnerie, Tuyauterie & Charpente Industrielle",
+  metadataBase: new URL("https://www.senegalinox.com"),
+  title: {
+    default: "Sénégal Inox Tech & Services | Chaudronnerie, Tuyauterie & Charpente Industrielle",
+    template: "%s | Sénégal Inox Tech & Services",
+  },
   description: "Leader des travaux industriels au Sénégal depuis 2003 : chaudronnerie lourde, tuyauterie industrielle, charpente métallique, réparation navale et décoration haut standing.",
   keywords: [
     "Sénégal Inox",
@@ -25,8 +29,35 @@ export const metadata: Metadata = {
     "Charpente métallique Sénégal",
     "Réparation navale port de Dakar",
     "Inox 316L",
-    "Métallurgie Dakar"
+    "Métallurgie Dakar",
   ],
+  authors: [{ name: "Sénégal Inox Tech & Services" }],
+  creator: "creativ_tech",
+  openGraph: {
+    type: "website",
+    locale: "fr_SN",
+    url: "https://www.senegalinox.com",
+    siteName: "Sénégal Inox Tech & Services",
+    title: "Sénégal Inox Tech & Services | Chaudronnerie, Tuyauterie & Charpente Industrielle",
+    description: "Leader des travaux industriels au Sénégal depuis 2003 : chaudronnerie lourde, tuyauterie industrielle, charpente métallique, réparation navale et décoration haut standing.",
+    images: [
+      {
+        url: "/images/qhse-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Sénégal Inox Tech & Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sénégal Inox Tech & Services",
+    description: "Leader des travaux industriels au Sénégal depuis 2003 : chaudronnerie lourde, tuyauterie industrielle, charpente métallique.",
+    images: ["/images/qhse-banner.png"],
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
