@@ -280,6 +280,13 @@ export function Header() {
               Nos Références & Partenaires
             </Link>
             <Link
+              href="/equipe"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 text-base font-semibold text-dark hover:bg-slate-light rounded-lg"
+            >
+              L&apos;Équipe & Certifications
+            </Link>
+            <Link
               href={getAnchorHref("#contact")}
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 text-base font-semibold text-[#8DBF21] bg-[#8DBF21]/10 rounded-lg flex items-center justify-between"

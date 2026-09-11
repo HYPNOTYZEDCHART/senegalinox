@@ -270,42 +270,42 @@ export function Footer() {
               </div>
 
               {/* Boutons de sélection d'onglets (Les 2 sites / Siège Bourguiba / Atelier Colobane) */}
-              <div className="flex items-center p-1.5 rounded-2xl bg-black/35 border border-white/20 backdrop-blur-md self-start lg:self-auto shadow-inner flex-wrap gap-1">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex items-center p-1.5 rounded-2xl bg-black/35 border border-white/20 backdrop-blur-md w-full lg:w-auto shadow-inner gap-1">
                 <button
                   type="button"
                   onClick={() => setActiveSiteKey("all")}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                     activeSiteKey === "all"
                       ? "bg-[#8DBF21] text-white shadow-lg"
                       : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
-                  <MapPin className="w-4 h-4" />
+                  <MapPin className="w-4 h-4 flex-shrink-0" />
                   <span>Les 2 Emplacements</span>
                   <span className="ml-1 text-[10px] px-1.5 py-0.5 rounded-full bg-black/30 font-mono">2</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveSiteKey("bureau")}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                     activeSiteKey === "bureau"
                       ? "bg-[#8DBF21] text-white shadow-lg"
                       : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
-                  <Building className="w-4 h-4" />
+                  <Building className="w-4 h-4 flex-shrink-0" />
                   <span>Siège Bourguiba</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveSiteKey("atelier")}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                     activeSiteKey === "atelier"
                       ? "bg-[#8DBF21] text-white shadow-lg"
                       : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
-                  <Wrench className="w-4 h-4" />
+                  <Wrench className="w-4 h-4 flex-shrink-0" />
                   <span>Atelier Colobane</span>
                 </button>
               </div>
@@ -315,12 +315,12 @@ export function Footer() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               
               {/* Colonne Gauche : Détails & Actions d'Itinéraire (5 colonnes) */}
-              <div className="lg:col-span-5 flex flex-col justify-between space-y-4 bg-black/25 p-5 sm:p-6 rounded-2xl border border-white/20 backdrop-blur-sm">
+              <div className="lg:col-span-5 flex flex-col justify-between space-y-4 bg-black/25 p-4 sm:p-6 rounded-2xl border border-white/20 backdrop-blur-sm">
                 
                 {/* 1. Mode Vue Globale (Les 2 Emplacements) */}
                 {activeSiteKey === "all" && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#8DBF21] bg-[#8DBF21]/15 border border-[#8DBF21]/30 px-3 py-1 rounded-full">
                         <MapPin className="w-3.5 h-3.5" />
                         <span>Réseau Industriel Dakarois</span>
@@ -331,11 +331,11 @@ export function Footer() {
                     </div>
 
                     {/* Fiche Emplacement 1 : Siège Bourguiba */}
-                    <div className="p-4 rounded-xl bg-white/10 hover:bg-white/[0.14] border border-white/15 transition-all space-y-2.5">
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-white/10 hover:bg-white/[0.14] border border-white/15 transition-all space-y-2.5">
                       <div className="flex items-start justify-between gap-2">
                         <div className="space-y-0.5">
                           <div className="flex items-center gap-1.5 text-xs font-bold text-[#8DBF21]">
-                            <Building className="w-3.5 h-3.5" />
+                            <Building className="w-3.5 h-3.5 flex-shrink-0" />
                             <span>1. Siège Administratif &amp; Bureau d&apos;Études</span>
                           </div>
                           <div className="text-xs font-semibold text-white">
@@ -348,7 +348,7 @@ export function Footer() {
                         <button
                           type="button"
                           onClick={() => handleCopy(`${SITES_DATA.bureau.address}, ${SITES_DATA.bureau.city}`, "bureau")}
-                          className="p-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white transition-colors flex-shrink-0"
+                          className="p-2 rounded-lg bg-white/15 hover:bg-white/25 text-white transition-colors flex-shrink-0"
                           title="Copier l'adresse du siège"
                           aria-label="Copier l'adresse"
                         >
@@ -356,42 +356,42 @@ export function Footer() {
                         </button>
                       </div>
 
-                      <div className="flex items-center gap-2 pt-1">
+                      <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 pt-1">
                         <a
                           href={SITES_DATA.bureau.googleMapsDirUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#8DBF21] hover:bg-[#7ba81b] text-white text-[11px] font-bold shadow transition-all"
+                          className="col-span-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-[#8DBF21] hover:bg-[#7ba81b] text-white text-xs font-bold shadow transition-all min-h-[38px]"
                         >
-                          <Navigation className="w-3.5 h-3.5" />
+                          <Navigation className="w-3.5 h-3.5 flex-shrink-0" />
                           <span>Itinéraire Maps</span>
                         </a>
                         <a
                           href={SITES_DATA.bureau.wazeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold border border-white/20 transition-all"
+                          className="col-span-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-semibold border border-white/20 transition-all min-h-[38px]"
                         >
-                          <Compass className="w-3.5 h-3.5" />
+                          <Compass className="w-3.5 h-3.5 flex-shrink-0" />
                           <span>Waze</span>
                         </a>
                         <button
                           type="button"
                           onClick={() => setActiveSiteKey("bureau")}
-                          className="px-2.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-medium border border-white/15"
+                          className="col-span-2 sm:col-span-1 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-medium border border-white/15 min-h-[36px] transition-colors"
                           title="Zoomer sur le siège"
                         >
-                          Détails
+                          Fiche détaillée →
                         </button>
                       </div>
                     </div>
 
                     {/* Fiche Emplacement 2 : Atelier Colobane */}
-                    <div className="p-4 rounded-xl bg-white/10 hover:bg-white/[0.14] border border-white/15 transition-all space-y-2.5">
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-white/10 hover:bg-white/[0.14] border border-white/15 transition-all space-y-2.5">
                       <div className="flex items-start justify-between gap-2">
                         <div className="space-y-0.5">
                           <div className="flex items-center gap-1.5 text-xs font-bold text-[#8DBF21]">
-                            <Wrench className="w-3.5 h-3.5" />
+                            <Wrench className="w-3.5 h-3.5 flex-shrink-0" />
                             <span>2. Atelier Chaudronnerie &amp; Usinage Lourd</span>
                           </div>
                           <div className="text-xs font-semibold text-white">
@@ -404,7 +404,7 @@ export function Footer() {
                         <button
                           type="button"
                           onClick={() => handleCopy(`${SITES_DATA.atelier.address}, ${SITES_DATA.atelier.city}`, "atelier")}
-                          className="p-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white transition-colors flex-shrink-0"
+                          className="p-2 rounded-lg bg-white/15 hover:bg-white/25 text-white transition-colors flex-shrink-0"
                           title="Copier l'adresse de l'atelier"
                           aria-label="Copier l'adresse"
                         >
@@ -412,32 +412,32 @@ export function Footer() {
                         </button>
                       </div>
 
-                      <div className="flex items-center gap-2 pt-1">
+                      <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 pt-1">
                         <a
                           href={SITES_DATA.atelier.googleMapsDirUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#8DBF21] hover:bg-[#7ba81b] text-white text-[11px] font-bold shadow transition-all"
+                          className="col-span-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-[#8DBF21] hover:bg-[#7ba81b] text-white text-xs font-bold shadow transition-all min-h-[38px]"
                         >
-                          <Navigation className="w-3.5 h-3.5" />
+                          <Navigation className="w-3.5 h-3.5 flex-shrink-0" />
                           <span>Itinéraire Maps</span>
                         </a>
                         <a
                           href={SITES_DATA.atelier.wazeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold border border-white/20 transition-all"
+                          className="col-span-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-semibold border border-white/20 transition-all min-h-[38px]"
                         >
-                          <Compass className="w-3.5 h-3.5" />
+                          <Compass className="w-3.5 h-3.5 flex-shrink-0" />
                           <span>Waze</span>
                         </a>
                         <button
                           type="button"
                           onClick={() => setActiveSiteKey("atelier")}
-                          className="px-2.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-medium border border-white/15"
+                          className="col-span-2 sm:col-span-1 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-medium border border-white/15 min-h-[36px] transition-colors"
                           title="Zoomer sur l'atelier"
                         >
-                          Détails
+                          Fiche détaillée →
                         </button>
                       </div>
                     </div>

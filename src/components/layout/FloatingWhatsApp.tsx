@@ -13,15 +13,8 @@ export function FloatingWhatsApp() {
       aria-label="Contact WhatsApp"
       className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 pointer-events-auto"
     >
-      <div className="relative group flex items-center justify-center">
-        {/* Petite lumière / halo vert doux en arrière-plan */}
-        <span
-          className="absolute -inset-1 rounded-full bg-[#25D366] opacity-75 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-300 pointer-events-none animate-pulse"
-          style={{ animationDuration: "2.8s" }}
-          aria-hidden="true"
-        />
-
-        {/* Bouton WhatsApp officiel plus raffiné et moins gros */}
+      <div className="relative flex items-center justify-center">
+        {/* Bouton WhatsApp officiel net et élégant */}
         <a
           href={whatsappUrl}
           target="_blank"

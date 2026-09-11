@@ -55,6 +55,10 @@ export const MAIN_NAVIGATION: NavItem[] = [
     href: "/nos-references",
   },
   {
+    label: "L'Équipe",
+    href: "/equipe",
+  },
+  {
     label: "Contact & Devis",
     href: "/#contact",
     isAnchor: true,
