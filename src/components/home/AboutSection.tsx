@@ -4,14 +4,14 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Wrench } from "lucide-react";
 import { MECHANICAL_EASE, TextMaskReveal } from "@/components/ui/MaskReveal";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
-  // Interaction continue au scroll (parallaxe soyeuse entre texte et photo)
+  // Interaction continue au scroll (parallaxe soyeuse entre texte et photo sur desktop)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -27,38 +27,21 @@ export function AboutSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* SECTION QUI SOMMES NOUS : ANIMATION SYNCHRONISÉE ENTRE TEXTE ET PHOTO */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch mb-16">
+        {/* SECTION QUI SOMMES NOUS */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
           
-          {/* Colonne Gauche : Titre avec Overflow Mask + Déroulé séquentiel des paragraphes */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-4">
+          {/* Colonne Principale (Desktop: 7 cols / Mobile: 100%) */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-5">
             <TextMaskReveal>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-dark tracking-tight uppercase leading-tight">
                 QUI SOMMES NOUS ?
               </h2>
             </TextMaskReveal>
 
-            {/* Photo visible sur mobile / tablette avec animation de découpage */}
-            <motion.div
-              initial={{ clipPath: "inset(0% 0% 100% 0%)", opacity: 0.9 }}
-              animate={isInView ? { clipPath: "inset(0% 0% 0% 0%)", opacity: 1 } : {}}
-              transition={{ duration: 0.95, ease: MECHANICAL_EASE }}
-              className="lg:hidden relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-steel shadow-xl my-3"
-            >
-              <Image
-                src="/images/about.jpg"
-                alt="Soudage TIG inox et tuyauterie industrielle - Sénégal Inox"
-                fill
-                priority
-                className="object-cover object-center"
-                sizes="100vw"
-              />
-            </motion.div>
-
-            {/* Paragraphes avec glissement fluide de gauche à droite (stagger) */}
-            <div className="space-y-3 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+            {/* 1. LE TEXTE S'AFFICHE EN PREMIER (SUR MOBILE COMME SUR DESKTOP) */}
+            <div className="space-y-3.5 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
               <motion.p
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.08, ease: MECHANICAL_EASE }}
               >
@@ -66,7 +49,7 @@ export function AboutSection() {
               </motion.p>
 
               <motion.p
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.16, ease: MECHANICAL_EASE }}
               >
@@ -74,7 +57,7 @@ export function AboutSection() {
               </motion.p>
 
               <motion.p
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.24, ease: MECHANICAL_EASE }}
               >
@@ -82,7 +65,7 @@ export function AboutSection() {
               </motion.p>
 
               <motion.p
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.32, ease: MECHANICAL_EASE }}
               >
@@ -90,7 +73,7 @@ export function AboutSection() {
               </motion.p>
 
               <motion.p
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.4, ease: MECHANICAL_EASE }}
               >
@@ -98,12 +81,37 @@ export function AboutSection() {
               </motion.p>
             </div>
 
-            {/* Bouton Vert L'ÉQUIPE avec glissement de gauche à droite */}
+            {/* 2. PHOTO SUR MOBILE : S'AFFICHE APRÈS LE TEXTE AVEC UNE ANIMATION FLUIDE */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.75, ease: MECHANICAL_EASE }}
+              className="lg:hidden relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-steel shadow-xl my-4 group"
+            >
+              <Image
+                src="/images/about.jpg"
+                alt="Soudage TIG inox et tuyauterie industrielle - Sénégal Inox"
+                fill
+                priority
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 500px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
+                <span className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 font-medium">
+                  <Wrench className="w-3.5 h-3.5 text-[#8DBF21]" />
+                  <span>Atelier &amp; Chaudronnerie de précision</span>
+                </span>
+              </div>
+            </motion.div>
+
+            {/* 3. BOUTON VERT L'ÉQUIPE */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.48, ease: MECHANICAL_EASE }}
-              className="pt-3"
+              className="pt-2"
             >
               <Link
                 href="/equipe"
@@ -115,14 +123,14 @@ export function AboutSection() {
             </motion.div>
           </div>
 
-          {/* Colonne Droite (Desktop) : Arrivée fluide de gauche à droite avec ouverture géométrique */}
+          {/* Colonne Droite (Desktop) : Photo latérale avec parallaxe */}
           <div className="hidden lg:flex lg:col-span-5 h-full">
             <motion.div
               style={{ y: photoParallaxY }}
               initial={{ opacity: 0, x: -50, clipPath: "inset(0% 100% 0% 0%)" }}
               animate={isInView ? { opacity: 1, x: 0, clipPath: "inset(0% 0% 0% 0%)" } : {}}
               transition={{ duration: 0.95, ease: MECHANICAL_EASE, delay: 0.2 }}
-              className="relative w-full h-full min-h-[440px] rounded-2xl overflow-hidden border border-steel shadow-2xl bg-dark"
+              className="relative w-full h-full min-h-[460px] rounded-2xl overflow-hidden border border-steel shadow-2xl bg-dark"
             >
               <Image
                 src="/images/about.jpg"
@@ -132,7 +140,6 @@ export function AboutSection() {
                 className="object-cover object-center"
                 sizes="(max-width: 1280px) 42vw, 500px"
               />
-              {/* Reflet lumineux subtil en overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
             </motion.div>
           </div>
